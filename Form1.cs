@@ -96,7 +96,7 @@ namespace PDF2DWG
 
 
                     if (!string.IsNullOrEmpty(error))
-                        CallErrorDialog(error, true);
+                        CallInfoDialog(error, true);
 
                     if (proc.ExitCode == 0)
                     {
@@ -106,7 +106,7 @@ namespace PDF2DWG
             }
             catch (Exception ex)
             {
-                CallErrorDialog("pdf to dwg error"+ex, true);
+                CallInfoDialog("pdf to dwg error"+ex, true);
                 return false;
             }
             return false;
@@ -161,14 +161,14 @@ namespace PDF2DWG
 
                 }
 
-                CallErrorDialog("변환 완료", false);
+                CallInfoDialog("변환 완료", false);
 
 
             }
             catch (InvalidOperationException) { }
             catch
             {
-                CallErrorDialog("가져오기 실패함", true);
+                CallInfoDialog("가져오기 실패함", true);
             }
 
         }
@@ -185,7 +185,7 @@ namespace PDF2DWG
             return prj;
         }
 
-        public InfoDialog CallErrorDialog(string errorMsg, bool isError)
+        public InfoDialog CallInfoDialog(string errorMsg, bool isError)
         {
             var errorDialog = new InfoDialog(errorMsg, isError)
             {
